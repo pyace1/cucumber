@@ -3,27 +3,17 @@ package stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import pages.BasePage;
+import pages.DriverUtils;
 
-public class MyStepdefs {
-    WebDriver driver;
 
-    @Given("Launch the browser")
-    public void launch_the_browser(){
+public class MyStepdefs extends BasePage {
 
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    public MyStepdefs(DriverUtils d) {
+        super(d.driver);
     }
-    @Given("Maximize the browser window")
-    public void maximize_the_browser_window() {
-        driver.manage().window().maximize();
-    }
-    @Given("Open automation practice")
-    public void open_automation_practice() {
-        driver.get("http://automationpractice.com/index.php");
-    }
+
     @Given("Navigate to Sign in page")
     public void navigate_to_sign_in_page() {
         // Write code here that turns the phrase above into concrete actions
@@ -49,8 +39,5 @@ public class MyStepdefs {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-    @Then("Close the browser")
-    public void close_the_browser() {
-        driver.quit();
-    }
+
 }
